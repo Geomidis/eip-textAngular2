@@ -1,6 +1,6 @@
 {
-  "name": "eip-textAngular2",
-  "version": "1.6",
+  "name": "eip-textangular2",
+  "version": "1.7",
   "main": [
     "./dist/textAngular.js",
     "./dist/textAngular-sanitize.js",
