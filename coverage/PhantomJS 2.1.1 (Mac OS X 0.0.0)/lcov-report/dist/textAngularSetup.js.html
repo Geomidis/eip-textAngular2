@@ -1,0 +1,3162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dist/textAngularSetup.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">dist/</a> textAngularSetup.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.15% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>318/324</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.84% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>136/139</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.68% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>75/76</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.1% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>310/316</span>
+      </div>
+      <div class='fl pad1y'>
+        <span class="strong">18 statements, 1 function, 19 branches</span>
+        <span class="quiet">Ignored</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966
+967
+968
+969
+970
+971
+972
+973
+974
+975
+976
+977
+978
+979
+980
+981
+982
+983
+984
+985
+986
+987
+988
+989
+990
+991
+992
+993
+994
+995
+996
+997
+998
+999
+1000
+1001
+1002
+1003
+1004
+1005
+1006
+1007
+1008
+1009
+1010
+1011
+1012
+1013
+1014
+1015
+1016
+1017
+1018
+1019
+1020
+1021
+1022
+1023
+1024
+1025
+1026
+1027
+1028
+1029
+1030
+1031
+1032</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1537×</span>
+<span class="cline-any cline-yes">1537×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">23083×</span>
+<span class="cline-any cline-yes">23080×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">23078×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-yes">4554×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-yes">4554×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">152×</span>
+<span class="cline-any cline-yes">152×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">152×</span>
+<span class="cline-any cline-yes">152×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">166×</span>
+<span class="cline-any cline-yes">108×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-yes">152×</span>
+<span class="cline-any cline-yes">152×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">759×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+// tests against the current jqLite/jquery implementation if this can be an element
+function validElementString(string){
+    try{
+        return angular.element(string).length !== 0;
+    }catch(any){
+<span class="cstat-no" title="statement not covered" >        return false;</span>
+    }
+}
+// setup the global contstant functions for setting up the toolbar
+&nbsp;
+// all tool definitions
+var taTools = {};
+/*
+    A tool definition is an object with the following key/value parameters:
+        action: [function(deferred, restoreSelection)]
+                a function that is executed on clicking on the button - this will allways be executed using ng-click and will
+                overwrite any ng-click value in the display attribute.
+                The function is passed a deferred object ($q.defer()), if this is wanted to be used `return false;` from the action and
+                manually call `deferred.resolve();` elsewhere to notify the editor that the action has finished.
+                restoreSelection is only defined if the rangy library is included and it can be called as `restoreSelection()` to restore the users
+                selection in the WYSIWYG editor.
+        display: [string]?
+                Optional, an HTML element to be displayed as the button. The `scope` of the button is the tool definition object with some additional functions
+                If set this will cause buttontext and iconclass to be ignored
+        class: [string]?
+                Optional, if set will override the taOptions.classes.toolbarButton class.
+        buttontext: [string]?
+                if this is defined it will replace the contents of the element contained in the `display` element
+        iconclass: [string]?
+                if this is defined an icon (&lt;i&gt;) will be appended to the `display` element with this string as it's class
+        tooltiptext: [string]?
+                Optional, a plain text description of the action, used for the title attribute of the action button in the toolbar by default.
+        activestate: [function(commonElement)]?
+                this function is called on every caret movement, if it returns true then the class taOptions.classes.toolbarButtonActive
+                will be applied to the `display` element, else the class will be removed
+        disabled: [function()]?
+                if this function returns true then the tool will have the class taOptions.classes.disabled applied to it, else it will be removed
+    Other functions available on the scope are:
+        name: [string]
+                the name of the tool, this is the first parameter passed into taRegisterTool
+        isDisabled: [function()]
+                returns true if the tool is disabled, false if it isn't
+        displayActiveToolClass: [function(boolean)]
+                returns true if the tool is 'active' in the currently focussed toolbar
+        onElementSelect: [Object]
+                This object contains the following key/value pairs and is used to trigger the ta-element-select event
+                element: [String]
+                    an element name, will only trigger the onElementSelect action if the tagName of the element matches this string
+                filter: [function(element)]?
+                    an optional filter that returns a boolean, if true it will trigger the onElementSelect.
+                action: [function(event, element, editorScope)]
+                    the action that should be executed if the onElementSelect function runs
+*/
+// name and toolDefinition to add into the tools available to be added on the toolbar
+function registerTextAngularTool(name, toolDefinition){
+    if(!name || name === '' || taTools.hasOwnProperty(name)) throw('textAngular Error: A unique name is required for a Tool Definition');
+    if(
+        (toolDefinition.display &amp;&amp; (toolDefinition.display === '' || !validElementString(toolDefinition.display))) ||
+        (!toolDefinition.display &amp;&amp; !toolDefinition.buttontext &amp;&amp; !toolDefinition.iconclass)
+    )
+        throw('textAngular Error: Tool Definition for "' + name + '" does not have a valid display/iconclass/buttontext value');
+    taTools[name] = toolDefinition;
+}
+&nbsp;
+angular.module('textAngularSetup', [])
+.constant('taRegisterTool', registerTextAngularTool)
+.value('taTools', taTools)
+// Here we set up the global display defaults, to set your own use a angular $provider#decorator.
+.value('taOptions',  {
+    //////////////////////////////////////////////////////////////////////////////////////
+    // forceTextAngularSanitize
+    // set false to allow the textAngular-sanitize provider to be replaced
+    // with angular-sanitize or a custom provider.
+    forceTextAngularSanitize: true,
+    ///////////////////////////////////////////////////////////////////////////////////////
+    // keyMappings
+    // allow customizable keyMappings for specialized key boards or languages
+    //
+    // keyMappings provides key mappings that are attached to a given commandKeyCode.
+    // To modify a specific keyboard binding, simply provide function which returns true
+    // for the event you wish to map to.
+    // Or to disable a specific keyboard binding, provide a function which returns false.
+    // Note: 'RedoKey' and 'UndoKey' are internally bound to the redo and undo functionality.
+    // At present, the following commandKeyCodes are in use:
+    // 98, 'TabKey', 'ShiftTabKey', 105, 117, 'UndoKey', 'RedoKey'
+    //
+    // To map to an new commandKeyCode, add a new key mapping such as:
+    // {commandKeyCode: 'CustomKey', testForKey: function (event) {
+    //  if (event.keyCode=57 &amp;&amp; event.ctrlKey &amp;&amp; !event.shiftKey &amp;&amp; !event.altKey) return true;
+    // } }
+    // to the keyMappings. This example maps ctrl+9 to 'CustomKey'
+    // Then where taRegisterTool(...) is called, add a commandKeyCode: 'CustomKey' and your
+    // tool will be bound to ctrl+9.
+    //
+    // To disble one of the already bound commandKeyCodes such as 'RedoKey' or 'UndoKey' add:
+    // {commandKeyCode: 'RedoKey', testForKey: function (event) { return false; } },
+    // {commandKeyCode: 'UndoKey', testForKey: function (event) { return false; } },
+    // to disable them.
+    //
+    keyMappings : [],
+    toolbar: [
+        ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
+        ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+        ['justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent'],
+        ['html', 'insertImage', 'insertLink', 'insertVideo', 'wordcount', 'charcount']
+    ],
+    classes: {
+        focussed: "focussed",
+        toolbar: "btn-toolbar",
+        toolbarGroup: "btn-group",
+        toolbarButton: "btn btn-default",
+        toolbarButtonActive: "active",
+        disabled: "disabled",
+        textEditor: 'form-control',
+        htmlEditor: 'form-control'
+    },
+    defaultTagAttributes : {
+        a: {target:""}
+    },
+    setup: {
+        // wysiwyg mode
+        textEditorSetup: function($element){ /* Do some processing here */ },
+        // raw html
+        htmlEditorSetup: function($element){ /* Do some processing here */ }
+    },
+    defaultFileDropHandler:
+        /* istanbul ignore next: untestable image processing */
+        function(file, insertAction){
+            var reader = new FileReader();
+            if(file.type.substring(0, 5) === 'image'){
+<span class="cstat-skip" title="statement not covered" >                reader.onload = <span class="fstat-skip" title="function not covered" >function() {</span></span>
+<span class="cstat-skip" title="statement not covered" >                    if(reader.result !== '') <span class="cstat-skip" title="statement not covered" >insertAction('insertImage', reader.result, true);</span></span>
+                };
+&nbsp;
+<span class="cstat-skip" title="statement not covered" >                reader.readAsDataURL(file);</span>
+                // NOTE: For async procedures return a promise and resolve it when the editor should update the model.
+<span class="cstat-skip" title="statement not covered" >                return true;</span>
+            }
+<span class="cstat-skip" title="statement not covered" >            return false;</span>
+        }
+})
+&nbsp;
+// This is the element selector string that is used to catch click events within a taBind, prevents the default and $emits a 'ta-element-select' event
+// these are individually used in an angular.element().find() call. What can go here depends on whether you have full jQuery loaded or just jQLite with angularjs.
+// div is only used as div.ta-insert-video caught in filter.
+.value('taSelectableElements', ['a','img'])
+&nbsp;
+// This is an array of objects with the following options:
+//				selector: &lt;string&gt; a jqLite or jQuery selector string
+//				customAttribute: &lt;string&gt; an attribute to search for
+//				renderLogic: &lt;function(element)&gt;
+// Both or one of selector and customAttribute must be defined.
+.value('taCustomRenderers', [
+    {
+        // Parse back out: '&lt;div class="ta-insert-video" ta-insert-video src="' + urlLink + '" allowfullscreen="true" width="300" frameborder="0" height="250"&gt;&lt;/div&gt;'
+        // To correct video element. For now only support youtube
+        selector: 'img',
+        customAttribute: 'ta-insert-video',
+        renderLogic: function(element){
+            var iframe = angular.element('&lt;iframe&gt;&lt;/iframe&gt;');
+            var attributes = element.prop("attributes");
+            // loop through element attributes and apply them on iframe
+            angular.forEach(attributes, function(attr) {
+                iframe.attr(attr.name, attr.value);
+            });
+            iframe.attr('src', iframe.attr('ta-insert-video'));
+            element.replaceWith(iframe);
+        }
+    }
+])
+&nbsp;
+.value('taTranslations', {
+    // moved to sub-elements
+    //toggleHTML: "Toggle HTML",
+    //insertImage: "Please enter a image URL to insert",
+    //insertLink: "Please enter a URL to insert",
+    //insertVideo: "Please enter a youtube URL to embed",
+    html: {
+        tooltip: 'Toggle html / Rich Text'
+    },
+    // tooltip for heading - might be worth splitting
+    heading: {
+        tooltip: 'Heading '
+    },
+    p: {
+        tooltip: 'Paragraph'
+    },
+    pre: {
+        tooltip: 'Preformatted text'
+    },
+    ul: {
+        tooltip: 'Unordered List'
+    },
+    ol: {
+        tooltip: 'Ordered List'
+    },
+    quote: {
+        tooltip: 'Quote/unquote selection or paragraph'
+    },
+    undo: {
+        tooltip: 'Undo'
+    },
+    redo: {
+        tooltip: 'Redo'
+    },
+    bold: {
+        tooltip: 'Bold'
+    },
+    italic: {
+        tooltip: 'Italic'
+    },
+    underline: {
+        tooltip: 'Underline'
+    },
+    strikeThrough:{
+        tooltip: 'Strikethrough'
+    },
+    justifyLeft: {
+        tooltip: 'Align text left'
+    },
+    justifyRight: {
+        tooltip: 'Align text right'
+    },
+    justifyFull: {
+        tooltip: 'Justify text'
+    },
+    justifyCenter: {
+        tooltip: 'Center'
+    },
+    indent: {
+        tooltip: 'Increase indent'
+    },
+    outdent: {
+        tooltip: 'Decrease indent'
+    },
+    clear: {
+        tooltip: 'Clear formatting'
+    },
+    insertImage: {
+        dialogPrompt: 'Please enter an image URL to insert',
+        tooltip: 'Insert image',
+        hotkey: 'the - possibly language dependent hotkey ... for some future implementation'
+    },
+    insertVideo: {
+        tooltip: 'Insert video',
+        dialogPrompt: 'Please enter a youtube URL to embed'
+    },
+    insertLink: {
+        tooltip: 'Insert / edit link',
+        dialogPrompt: "Please enter a URL to insert"
+    },
+    editLink: {
+        reLinkButton: {
+            tooltip: "Relink"
+        },
+        unLinkButton: {
+            tooltip: "Unlink"
+        },
+        targetToggle: {
+            buttontext: "new window"
+        },
+        noFollow: {
+            buttontext: 'no-follow'
+        }
+    },
+    wordcount: {
+        tooltip: 'Display words Count'
+    },
+        charcount: {
+        tooltip: 'Display characters Count'
+    }
+})
+.factory('taToolFunctions', ['$window','taTranslations', function($window, taTranslations) {
+    return {
+        imgOnSelectAction: function(event, $element, editorScope){
+            // setup the editor toolbar
+            // Credit to the work at http://hackerwins.github.io/summernote/ for this editbar logic/display
+            var finishEdit = function(){
+                editorScope.updateTaBindtaTextElement();
+                editorScope.hidePopover();
+            };
+            event.preventDefault();
+            editorScope.displayElements.popover.css('width', '375px');
+            var container = editorScope.displayElements.popoverContainer;
+            container.empty();
+            var buttonGroup = angular.element('&lt;div class="btn-group" style="padding-right: 6px;"&gt;');
+            var fullButton = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"&gt;100% &lt;/button&gt;');
+            fullButton.on('click', function(event){
+                event.preventDefault();
+                $element.css({
+                    'width': '100%',
+                    'height': ''
+                });
+                finishEdit();
+            });
+            var halfButton = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"&gt;50% &lt;/button&gt;');
+            halfButton.on('click', function(event){
+                event.preventDefault();
+                $element.css({
+                    'width': '50%',
+                    'height': ''
+                });
+                finishEdit();
+            });
+            var quartButton = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"&gt;25% &lt;/button&gt;');
+            quartButton.on('click', function(event){
+                event.preventDefault();
+                $element.css({
+                    'width': '25%',
+                    'height': ''
+                });
+                finishEdit();
+            });
+            var resetButton = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"&gt;Reset&lt;/button&gt;');
+            resetButton.on('click', function(event){
+                event.preventDefault();
+                $element.css({
+                    width: '',
+                    height: ''
+                });
+                finishEdit();
+            });
+            buttonGroup.append(fullButton);
+            buttonGroup.append(halfButton);
+            buttonGroup.append(quartButton);
+            buttonGroup.append(resetButton);
+            container.append(buttonGroup);
+&nbsp;
+            buttonGroup = angular.element('&lt;div class="btn-group" style="padding-right: 6px;"&gt;');
+            var floatLeft = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"&gt;&lt;i class="fa fa-align-left"&gt;&lt;/i&gt;&lt;/button&gt;');
+            floatLeft.on('click', function(event){
+                event.preventDefault();
+                // webkit
+                $element.css('float', 'left');
+                // firefox
+                $element.css('cssFloat', 'left');
+                // IE &lt; 8
+                $element.css('styleFloat', 'left');
+                finishEdit();
+            });
+            var floatRight = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"&gt;&lt;i class="fa fa-align-right"&gt;&lt;/i&gt;&lt;/button&gt;');
+            floatRight.on('click', function(event){
+                event.preventDefault();
+                // webkit
+                $element.css('float', 'right');
+                // firefox
+                $element.css('cssFloat', 'right');
+                // IE &lt; 8
+                $element.css('styleFloat', 'right');
+                finishEdit();
+            });
+            var floatNone = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"&gt;&lt;i class="fa fa-align-justify"&gt;&lt;/i&gt;&lt;/button&gt;');
+            floatNone.on('click', function(event){
+                event.preventDefault();
+                // webkit
+                $element.css('float', '');
+                // firefox
+                $element.css('cssFloat', '');
+                // IE &lt; 8
+                $element.css('styleFloat', '');
+                finishEdit();
+            });
+            buttonGroup.append(floatLeft);
+            buttonGroup.append(floatNone);
+            buttonGroup.append(floatRight);
+            container.append(buttonGroup);
+&nbsp;
+            buttonGroup = angular.element('&lt;div class="btn-group"&gt;');
+            var remove = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" unselectable="on" tabindex="-1"&gt;&lt;i class="fa fa-trash-o"&gt;&lt;/i&gt;&lt;/button&gt;');
+            remove.on('click', function(event){
+                event.preventDefault();
+                $element.remove();
+                finishEdit();
+            });
+            buttonGroup.append(remove);
+            container.append(buttonGroup);
+&nbsp;
+            editorScope.showPopover($element);
+            editorScope.showResizeOverlay($element);
+        },
+        aOnSelectAction: function(event, $element, editorScope){
+            // setup the editor toolbar
+            // Credit to the work at http://hackerwins.github.io/summernote/ for this editbar logic
+            event.preventDefault();
+            editorScope.displayElements.popover.css('width', '436px');
+            var container = editorScope.displayElements.popoverContainer;
+            container.empty();
+            container.css('line-height', '28px');
+            var link = angular.element('&lt;a href="' + $element.attr('href') + '" target="_blank"&gt;' + $element.attr('href') + '&lt;/a&gt;');
+            link.css({
+                'display': 'inline-block',
+                'max-width': '200px',
+                'overflow': 'hidden',
+                'text-overflow': 'ellipsis',
+                'white-space': 'nowrap',
+                'vertical-align': 'middle'
+            });
+            container.append(link);
+            var buttonGroup = angular.element('&lt;div class="btn-group pull-right"&gt;');
+            var reLinkButton = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" tabindex="-1" unselectable="on" title="' + taTranslations.editLink.reLinkButton.tooltip + '"&gt;&lt;i class="fa fa-edit icon-edit"&gt;&lt;/i&gt;&lt;/button&gt;');
+            reLinkButton.on('click', function(event){
+                event.preventDefault();
+                var urlLink = $window.prompt(taTranslations.insertLink.dialogPrompt, $element.attr('href'));
+                if(urlLink &amp;&amp; urlLink !== '' &amp;&amp; urlLink !== 'http://'){
+                    $element.attr('href', urlLink);
+                    editorScope.updateTaBindtaTextElement();
+                }
+                editorScope.hidePopover();
+            });
+            buttonGroup.append(reLinkButton);
+            var unLinkButton = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small" tabindex="-1" unselectable="on" title="' + taTranslations.editLink.unLinkButton.tooltip + '"&gt;&lt;i class="fa fa-unlink icon-unlink"&gt;&lt;/i&gt;&lt;/button&gt;');
+            // directly before this click event is fired a digest is fired off whereby the reference to $element is orphaned off
+            unLinkButton.on('click', function(event){
+                event.preventDefault();
+                $element.replaceWith($element.contents());
+                editorScope.updateTaBindtaTextElement();
+                editorScope.hidePopover();
+            });
+            buttonGroup.append(unLinkButton);
+            var targetToggle = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small toggle" tabindex="-1" unselectable="on"&gt;' + taTranslations.editLink.targetToggle.buttontext + '&lt;/button&gt;');
+            if($element.attr('target') === '_blank'){
+                targetToggle.addClass('active');
+            }
+            targetToggle.on('click', function(event){
+                event.preventDefault();
+                $element.attr('target', ($element.attr('target') === '_blank') ? '' : '_blank');
+                targetToggle.toggleClass('active');
+                editorScope.updateTaBindtaTextElement();
+            });
+            buttonGroup.append(targetToggle);
+&nbsp;
+            /* george adding new no-follow button*/
+            var followToggle = angular.element('&lt;button type="button" class="btn btn-default btn-sm btn-small toggle" tabindex="-1" unselectable="on"&gt;' + taTranslations.editLink.noFollow.buttontext + '&lt;/button&gt;');
+            <span class="missing-if-branch" title="if path not taken" >I</span>if($element.attr('rel') === 'nofollow'){
+<span class="cstat-no" title="statement not covered" >                followToggle.addClass('active');</span>
+            }
+            followToggle.on('click', <span class="fstat-no" title="function not covered" >function(event){</span>
+<span class="cstat-no" title="statement not covered" >                event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >                $element.attr('rel', ($element.attr('rel') === 'nofollow') ? '' : 'nofollow');</span>
+<span class="cstat-no" title="statement not covered" >                followToggle.toggleClass('active');</span>
+<span class="cstat-no" title="statement not covered" >                editorScope.updateTaBindtaTextElement();</span>
+            });
+            buttonGroup.append(followToggle);
+&nbsp;
+&nbsp;
+            container.append(buttonGroup);
+            editorScope.showPopover($element);
+        },
+        extractYoutubeVideoId: function(url) {
+            var re = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&amp;]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i;
+            var match = url.match(re);
+            return (match &amp;&amp; match[1]) || null;
+        }
+    };
+}])
+.run(['taRegisterTool', '$window', 'taTranslations', 'taSelection', 'taToolFunctions', '$sanitize', 'taOptions', '$log',
+    function(taRegisterTool, $window, taTranslations, taSelection, taToolFunctions, $sanitize, taOptions, $log){
+    // test for the version of $sanitize that is in use
+    // You can disable this check by setting taOptions.textAngularSanitize == false
+    var gv = {}; $sanitize('', gv);
+    /* istanbul ignore next, throws error */
+    <span class="skip-if-branch" title="if path not taken" >I</span>if ((taOptions.forceTextAngularSanitize===true) &amp;&amp; (gv.version !== 'taSanitize')) {
+<span class="cstat-skip" title="statement not covered" >        throw angular.$$minErr('textAngular')("textAngularSetup", "The textAngular-sanitize provider has been replaced by another -- have you included angular-sanitize by mistake?");</span>
+    }
+    taRegisterTool("html", {
+        iconclass: 'fa fa-code',
+        tooltiptext: taTranslations.html.tooltip,
+        action: function(){
+            this.$editor().switchView();
+        },
+        activeState: function(){
+            return this.$editor().showHtml;
+        }
+    });
+    // add the Header tools
+    // convenience functions so that the loop works correctly
+    var _retActiveStateFunction = function(q){
+        return function(){ return this.$editor().queryFormatBlockState(q); };
+    };
+    var headerAction = function(){
+        return this.$editor().wrapSelection("formatBlock", "&lt;" + this.name.toUpperCase() +"&gt;");
+    };
+    angular.forEach(['h1','h2','h3','h4','h5','h6'], function(h){
+        taRegisterTool(h.toLowerCase(), {
+            buttontext: h.toUpperCase(),
+            tooltiptext: taTranslations.heading.tooltip + h.charAt(1),
+            action: headerAction,
+            activeState: _retActiveStateFunction(h.toLowerCase())
+        });
+    });
+    taRegisterTool('p', {
+        buttontext: 'P',
+        tooltiptext: taTranslations.p.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("formatBlock", "&lt;P&gt;");
+        },
+        activeState: function(){ return this.$editor().queryFormatBlockState('p'); }
+    });
+    // key: pre -&gt; taTranslations[key].tooltip, taTranslations[key].buttontext
+    taRegisterTool('pre', {
+        buttontext: 'pre',
+        tooltiptext: taTranslations.pre.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("formatBlock", "&lt;PRE&gt;");
+        },
+        activeState: function(){ return this.$editor().queryFormatBlockState('pre'); }
+    });
+    taRegisterTool('ul', {
+        iconclass: 'fa fa-list-ul',
+        tooltiptext: taTranslations.ul.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("insertUnorderedList", null);
+        },
+        activeState: function(){ return this.$editor().queryCommandState('insertUnorderedList'); }
+    });
+    taRegisterTool('ol', {
+        iconclass: 'fa fa-list-ol',
+        tooltiptext: taTranslations.ol.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("insertOrderedList", null);
+        },
+        activeState: function(){ return this.$editor().queryCommandState('insertOrderedList'); }
+    });
+    taRegisterTool('quote', {
+        iconclass: 'fa fa-quote-right',
+        tooltiptext: taTranslations.quote.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("formatBlock", "&lt;BLOCKQUOTE&gt;");
+        },
+        activeState: function(){ return this.$editor().queryFormatBlockState('blockquote'); }
+    });
+    taRegisterTool('undo', {
+        iconclass: 'fa fa-undo',
+        tooltiptext: taTranslations.undo.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("undo", null);
+        }
+    });
+    taRegisterTool('redo', {
+        iconclass: 'fa fa-repeat',
+        tooltiptext: taTranslations.redo.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("redo", null);
+        }
+    });
+    taRegisterTool('bold', {
+        iconclass: 'fa fa-bold',
+        tooltiptext: taTranslations.bold.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("bold", null);
+        },
+        activeState: function(){
+            return this.$editor().queryCommandState('bold');
+        },
+        commandKeyCode: 98
+    });
+    taRegisterTool('justifyLeft', {
+        iconclass: 'fa fa-align-left',
+        tooltiptext: taTranslations.justifyLeft.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("justifyLeft", null);
+        },
+        activeState: function(commonElement){
+            /* istanbul ignore next: */
+            <span class="skip-if-branch" title="if path not taken" >I</span>if (commonElement &amp;&amp; commonElement.nodeName === '#document') <span class="cstat-skip" title="statement not covered" >return false;</span>
+            var result = false;
+            if (commonElement) {
+                // commonELement.css('text-align') can throw an error 'Cannot read property 'defaultView' of null' in rare conditions
+                // so we do try catch here...
+                try {
+                    result =
+                        commonElement.css('text-align') === 'left' ||
+                        commonElement.attr('align') === 'left' ||
+                        (
+                            commonElement.css('text-align') !== 'right' &amp;&amp;
+                            commonElement.css('text-align') !== 'center' &amp;&amp;
+                            commonElement.css('text-align') !== 'justify' &amp;&amp; !this.$editor().queryCommandState('justifyRight') &amp;&amp; !this.$editor().queryCommandState('justifyCenter')
+                        ) &amp;&amp; !this.$editor().queryCommandState('justifyFull');
+                } catch(e) {
+                    /* istanbul ignore next: error handler */
+                    //console.log(e);
+<span class="cstat-skip" title="statement not covered" >                    result = false;</span>
+                }
+            }
+            result = result || this.$editor().queryCommandState('justifyLeft');
+            return result;
+        }
+    });
+    taRegisterTool('justifyRight', {
+        iconclass: 'fa fa-align-right',
+        tooltiptext: taTranslations.justifyRight.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("justifyRight", null);
+        },
+        activeState: function(commonElement){
+            /* istanbul ignore next: */
+            <span class="skip-if-branch" title="if path not taken" >I</span>if (commonElement &amp;&amp; commonElement.nodeName === '#document') <span class="cstat-skip" title="statement not covered" >return false;</span>
+            var result = false;
+            if(commonElement) {
+                // commonELement.css('text-align') can throw an error 'Cannot read property 'defaultView' of null' in rare conditions
+                // so we do try catch here...
+                try {
+                    result = commonElement.css('text-align') === 'right';
+                } catch(e) {
+                    /* istanbul ignore next: error handler */
+                    //console.log(e);
+<span class="cstat-skip" title="statement not covered" >                    result = false;</span>
+                }
+            }
+            result = result || this.$editor().queryCommandState('justifyRight');
+            return result;
+        }
+    });
+    taRegisterTool('justifyFull', {
+        iconclass: 'fa fa-align-justify',
+        tooltiptext: taTranslations.justifyFull.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("justifyFull", null);
+        },
+        activeState: function(commonElement){
+            var result = false;
+            if(commonElement) {
+                // commonELement.css('text-align') can throw an error 'Cannot read property 'defaultView' of null' in rare conditions
+                // so we do try catch here...
+                try {
+                    result = commonElement.css('text-align') === 'justify';
+                } catch(e) {
+                    /* istanbul ignore next: error handler */
+                    //console.log(e);
+<span class="cstat-skip" title="statement not covered" >                    result = false;</span>
+                }
+            }
+            result = result || this.$editor().queryCommandState('justifyFull');
+            return result;
+        }
+    });
+    taRegisterTool('justifyCenter', {
+        iconclass: 'fa fa-align-center',
+        tooltiptext: taTranslations.justifyCenter.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("justifyCenter", null);
+        },
+        activeState: function(commonElement){
+            /* istanbul ignore next: */
+            <span class="skip-if-branch" title="if path not taken" >I</span>if (commonElement &amp;&amp; commonElement.nodeName === '#document') <span class="cstat-skip" title="statement not covered" >return false;</span>
+            var result = false;
+            if(commonElement) {
+                // commonELement.css('text-align') can throw an error 'Cannot read property 'defaultView' of null' in rare conditions
+                // so we do try catch here...
+                try {
+                    result = commonElement.css('text-align') === 'center';
+                } catch(e) {
+                    /* istanbul ignore next: error handler */
+                    //console.log(e);
+<span class="cstat-skip" title="statement not covered" >                    result = false;</span>
+                }
+&nbsp;
+            }
+            result = result || this.$editor().queryCommandState('justifyCenter');
+            return result;
+        }
+    });
+    taRegisterTool('indent', {
+        iconclass: 'fa fa-indent',
+        tooltiptext: taTranslations.indent.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("indent", null);
+        },
+        activeState: function(){
+            return this.$editor().queryFormatBlockState('blockquote');
+        },
+        commandKeyCode: 'TabKey'
+    });
+    taRegisterTool('outdent', {
+        iconclass: 'fa fa-outdent',
+        tooltiptext: taTranslations.outdent.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("outdent", null);
+        },
+        activeState: function(){
+            return false;
+        },
+        commandKeyCode: 'ShiftTabKey'
+    });
+    taRegisterTool('italics', {
+        iconclass: 'fa fa-italic',
+        tooltiptext: taTranslations.italic.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("italic", null);
+        },
+        activeState: function(){
+            return this.$editor().queryCommandState('italic');
+        },
+        commandKeyCode: 105
+    });
+    taRegisterTool('underline', {
+        iconclass: 'fa fa-underline',
+        tooltiptext: taTranslations.underline.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("underline", null);
+        },
+        activeState: function(){
+            return this.$editor().queryCommandState('underline');
+        },
+        commandKeyCode: 117
+    });
+    taRegisterTool('strikeThrough', {
+        iconclass: 'fa fa-strikethrough',
+        tooltiptext: taTranslations.strikeThrough.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("strikeThrough", null);
+        },
+        activeState: function(){
+            return document.queryCommandState('strikeThrough');
+        }
+    });
+    taRegisterTool('clear', {
+        iconclass: 'fa fa-ban',
+        tooltiptext: taTranslations.clear.tooltip,
+        action: function(deferred, restoreSelection){
+            var i, selectedElements, elementsSeen;
+&nbsp;
+            this.$editor().wrapSelection("removeFormat", null);
+            var possibleNodes = angular.element(taSelection.getSelectionElement());
+            selectedElements = taSelection.getAllSelectedElements();
+            //$log.log('selectedElements:', selectedElements);
+            // remove lists
+            var removeListElements = function(list, pe){
+                list = angular.element(list);
+                var prevElement = pe;
+                if (!pe) {
+                    prevElement = list;
+                }
+                angular.forEach(list.children(), function(liElem){
+                    if (liElem.tagName.toLowerCase() === 'ul' ||
+                        liElem.tagName.toLowerCase() === 'ol') {
+                        prevElement = removeListElements(liElem, prevElement);
+                    } else {
+                        var newElem = angular.element('&lt;p&gt;&lt;/p&gt;');
+                        newElem.html(angular.element(liElem).html());
+                        prevElement.after(newElem);
+                        prevElement = newElem;
+                    }
+                });
+                list.remove();
+                return prevElement;
+            };
+&nbsp;
+            angular.forEach(selectedElements, function(element) {
+                if (element.nodeName.toLowerCase() === 'ul' ||
+                    element.nodeName.toLowerCase() === 'ol') {
+                    //console.log('removeListElements', element);
+                    removeListElements(element);
+                }
+            });
+&nbsp;
+            angular.forEach(possibleNodes.find("ul"), removeListElements);
+            angular.forEach(possibleNodes.find("ol"), removeListElements);
+&nbsp;
+            // clear out all class attributes. These do not seem to be cleared via removeFormat
+            var $editor = this.$editor();
+            var recursiveRemoveClass = function(node){
+                node = angular.element(node);
+                /* istanbul ignore next: this is not triggered in tests any longer since we now never select the whole displayELement */
+                <span class="skip-if-branch" title="else path not taken" >E</span>if(node[0] !== $editor.displayElements.text[0]) {
+                    node.removeAttr('class');
+                }
+                angular.forEach(node.children(), recursiveRemoveClass);
+            };
+            angular.forEach(possibleNodes, recursiveRemoveClass);
+            // check if in list. If not in list then use formatBlock option
+            if(possibleNodes[0] &amp;&amp; possibleNodes[0].tagName.toLowerCase() !== 'li' &amp;&amp;
+                possibleNodes[0].tagName.toLowerCase() !== 'ol' &amp;&amp;
+                possibleNodes[0].tagName.toLowerCase() !== 'ul' &amp;&amp;
+                possibleNodes[0].getAttribute("contenteditable") !== "true") {
+                this.$editor().wrapSelection("formatBlock", "default");
+            }
+            restoreSelection();
+        }
+    });
+&nbsp;
+        /* jshint -W099 */
+    /****************************
+     //  we don't use this code - since the previous way CLEAR is expected to work does not clear partially selected &lt;li&gt;
+&nbsp;
+     var removeListElement = function(listE){
+                console.log(listE);
+                var _list = listE.parentNode.childNodes;
+                console.log('_list', _list);
+                var _preLis = [], _postLis = [], _found = false;
+                for (i = 0; i &lt; _list.length; i++) {
+                    if (_list[i] === listE) {
+                        _found = true;
+                    } else if (!_found) _preLis.push(_list[i]);
+                    else _postLis.push(_list[i]);
+                }
+                var _parent = angular.element(listE.parentNode);
+                var newElem = angular.element('&lt;p&gt;&lt;/p&gt;');
+                newElem.html(angular.element(listE).html());
+                if (_preLis.length === 0 || _postLis.length === 0) {
+                    if (_postLis.length === 0) _parent.after(newElem);
+                    else _parent[0].parentNode.insertBefore(newElem[0], _parent[0]);
+&nbsp;
+                    if (_preLis.length === 0 &amp;&amp; _postLis.length === 0) _parent.remove();
+                    else angular.element(listE).remove();
+                } else {
+                    var _firstList = angular.element('&lt;' + _parent[0].tagName + '&gt;&lt;/' + _parent[0].tagName + '&gt;');
+                    var _secondList = angular.element('&lt;' + _parent[0].tagName + '&gt;&lt;/' + _parent[0].tagName + '&gt;');
+                    for (i = 0; i &lt; _preLis.length; i++) _firstList.append(angular.element(_preLis[i]));
+                    for (i = 0; i &lt; _postLis.length; i++) _secondList.append(angular.element(_postLis[i]));
+                    _parent.after(_secondList);
+                    _parent.after(newElem);
+                    _parent.after(_firstList);
+                    _parent.remove();
+                }
+                taSelection.setSelectionToElementEnd(newElem[0]);
+            };
+&nbsp;
+     elementsSeen = [];
+     if (selectedElements.length !==0) console.log(selectedElements);
+     angular.forEach(selectedElements, function (element) {
+                if (elementsSeen.indexOf(element) !== -1 || elementsSeen.indexOf(element.parentElement) !== -1) {
+                    return;
+                }
+                elementsSeen.push(element);
+                if (element.nodeName.toLowerCase() === 'li') {
+                    console.log('removeListElement', element);
+                    removeListElement(element);
+                }
+                else if (element.parentElement &amp;&amp; element.parentElement.nodeName.toLowerCase() === 'li') {
+                    console.log('removeListElement', element.parentElement);
+                    elementsSeen.push(element.parentElement);
+                    removeListElement(element.parentElement);
+                }
+            });
+     **********************/
+&nbsp;
+    /**********************
+     if(possibleNodes[0].tagName.toLowerCase() === 'li'){
+                var _list = possibleNodes[0].parentNode.childNodes;
+                var _preLis = [], _postLis = [], _found = false;
+                for(i = 0; i &lt; _list.length; i++){
+                    if(_list[i] === possibleNodes[0]){
+                        _found = true;
+                    }else if(!_found) _preLis.push(_list[i]);
+                    else _postLis.push(_list[i]);
+                }
+                var _parent = angular.element(possibleNodes[0].parentNode);
+                var newElem = angular.element('&lt;p&gt;&lt;/p&gt;');
+                newElem.html(angular.element(possibleNodes[0]).html());
+                if(_preLis.length === 0 || _postLis.length === 0){
+                    if(_postLis.length === 0) _parent.after(newElem);
+                    else _parent[0].parentNode.insertBefore(newElem[0], _parent[0]);
+&nbsp;
+                    if(_preLis.length === 0 &amp;&amp; _postLis.length === 0) _parent.remove();
+                    else angular.element(possibleNodes[0]).remove();
+                }else{
+                    var _firstList = angular.element('&lt;'+_parent[0].tagName+'&gt;&lt;/'+_parent[0].tagName+'&gt;');
+                    var _secondList = angular.element('&lt;'+_parent[0].tagName+'&gt;&lt;/'+_parent[0].tagName+'&gt;');
+                    for(i = 0; i &lt; _preLis.length; i++) _firstList.append(angular.element(_preLis[i]));
+                    for(i = 0; i &lt; _postLis.length; i++) _secondList.append(angular.element(_postLis[i]));
+                    _parent.after(_secondList);
+                    _parent.after(newElem);
+                    _parent.after(_firstList);
+                    _parent.remove();
+                }
+                taSelection.setSelectionToElementEnd(newElem[0]);
+            }
+     *******************/
+&nbsp;
+&nbsp;
+    /* istanbul ignore next: if it's javascript don't worry - though probably should show some kind of error message */
+    var blockJavascript = function (link) {
+        <span class="skip-if-branch" title="if path not taken" >I</span>if (link.toLowerCase().indexOf('javascript')!==-1) {
+<span class="cstat-skip" title="statement not covered" >            return true;</span>
+        }
+        return false;
+    };
+&nbsp;
+    taRegisterTool('insertImage', {
+        iconclass: 'fa fa-picture-o',
+        tooltiptext: taTranslations.insertImage.tooltip,
+        action: function(){
+            var imageLink;
+            imageLink = $window.prompt(taTranslations.insertImage.dialogPrompt, 'http://');
+            if(imageLink &amp;&amp; imageLink !== '' &amp;&amp; imageLink !== 'http://'){
+                /* istanbul ignore next: don't know how to test this... since it needs a dialogPrompt */
+                // block javascript here
+                <span class="skip-if-branch" title="else path not taken" >E</span>if (!blockJavascript(imageLink)) {
+                    <span class="skip-if-branch" title="if path not taken" >I</span>if (taSelection.getSelectionElement().tagName &amp;&amp; taSelection.getSelectionElement().tagName.toLowerCase() === 'a') {
+                        // due to differences in implementation between FireFox and Chrome, we must move the
+                        // insertion point past the &lt;a&gt; element, otherwise FireFox inserts inside the &lt;a&gt;
+                        // With this change, both FireFox and Chrome behave the same way!
+<span class="cstat-skip" title="statement not covered" >                        taSelection.setSelectionAfterElement(taSelection.getSelectionElement());</span>
+                    }
+                    // In the past we used the simple statement:
+                    //return this.$editor().wrapSelection('insertImage', imageLink, true);
+                    //
+                    // However on Firefox only, when the content is empty this is a problem
+                    // See Issue #1201
+                    // Investigation reveals that Firefox only inserts a &lt;p&gt; only!!!!
+                    // So now we use insertHTML here and all is fine.
+                    // NOTE: this is what 'insertImage' is supposed to do anyway!
+                    var embed = '&lt;img src="' + imageLink + '"&gt;';
+                    return this.$editor().wrapSelection('insertHTML', embed, true);
+                }
+            }
+        },
+        onElementSelect: {
+            element: 'img',
+            action: taToolFunctions.imgOnSelectAction
+        }
+    });
+    taRegisterTool('insertVideo', {
+        iconclass: 'fa fa-youtube-play',
+        tooltiptext: taTranslations.insertVideo.tooltip,
+        action: function(){
+            var urlPrompt;
+            urlPrompt = $window.prompt(taTranslations.insertVideo.dialogPrompt, 'https://');
+            // block javascript here
+            /* istanbul ignore else: if it's javascript don't worry - though probably should show some kind of error message */
+            <span class="skip-if-branch" title="else path not taken" >E</span>if (!blockJavascript(urlPrompt)) {
+&nbsp;
+                if (urlPrompt &amp;&amp; urlPrompt !== '' &amp;&amp; urlPrompt !== 'https://') {
+&nbsp;
+                    videoId = taToolFunctions.extractYoutubeVideoId(urlPrompt);
+&nbsp;
+                    /* istanbul ignore else: if it's invalid don't worry - though probably should show some kind of error message */
+                    <span class="skip-if-branch" title="else path not taken" >E</span>if (videoId) {
+                        // create the embed link
+                        var urlLink = "https://www.youtube.com/embed/" + videoId;
+                        // create the HTML
+                        // for all options see: http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
+                        // maxresdefault.jpg seems to be undefined on some.
+                        var embed = '&lt;img class="ta-insert-video" src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" ta-insert-video="' + urlLink + '" contenteditable="false" allowfullscreen="true" frameborder="0" /&gt;';
+                        /* istanbul ignore next: don't know how to test this... since it needs a dialogPrompt */
+                        <span class="skip-if-branch" title="if path not taken" >I</span>if (taSelection.getSelectionElement().tagName &amp;&amp; taSelection.getSelectionElement().tagName.toLowerCase() === 'a') {
+                            // due to differences in implementation between FireFox and Chrome, we must move the
+                            // insertion point past the &lt;a&gt; element, otherwise FireFox inserts inside the &lt;a&gt;
+                            // With this change, both FireFox and Chrome behave the same way!
+<span class="cstat-skip" title="statement not covered" >                            taSelection.setSelectionAfterElement(taSelection.getSelectionElement());</span>
+                        }
+                        // insert
+                        return this.$editor().wrapSelection('insertHTML', embed, true);
+                    }
+                }
+            }
+        },
+        onElementSelect: {
+            element: 'img',
+            onlyWithAttrs: ['ta-insert-video'],
+            action: taToolFunctions.imgOnSelectAction
+        }
+    });
+    taRegisterTool('insertLink', {
+        tooltiptext: taTranslations.insertLink.tooltip,
+        iconclass: 'fa fa-link',
+        action: function(){
+            var urlLink;
+            // if this link has already been set, we need to just edit the existing link
+            /* istanbul ignore if: we do not test this */
+            <span class="skip-if-branch" title="if path not taken" >I</span>if (taSelection.getSelectionElement().tagName &amp;&amp; taSelection.getSelectionElement().tagName.toLowerCase() === 'a') {
+<span class="cstat-skip" title="statement not covered" >                urlLink = $window.prompt(taTranslations.insertLink.dialogPrompt, taSelection.getSelectionElement().href);</span>
+            } else {
+                urlLink = $window.prompt(taTranslations.insertLink.dialogPrompt, 'http://');
+            }
+            if(urlLink &amp;&amp; urlLink !== '' &amp;&amp; urlLink !== 'http://'){
+                // block javascript here
+                /* istanbul ignore else: if it's javascript don't worry - though probably should show some kind of error message */
+                <span class="skip-if-branch" title="else path not taken" >E</span>if (!blockJavascript(urlLink)) {
+                    return this.$editor().wrapSelection('createLink', urlLink, true);
+                }
+            }
+        },
+        activeState: function(commonElement){
+            if(commonElement) return commonElement[0].tagName === 'A';
+            return false;
+        },
+        onElementSelect: {
+            element: 'a',
+            action: taToolFunctions.aOnSelectAction
+        }
+    });
+    taRegisterTool('wordcount', {
+        display: '&lt;div id="toolbarWC" style="display:block; min-width:100px;"&gt;Words: &lt;span ng-bind="wordcount"&gt;&lt;/span&gt;&lt;/div&gt;',
+        disabled: true,
+        wordcount: 0,
+        activeState: function(){ // this fires on keyup
+            var textElement = this.$editor().displayElements.text;
+            /* istanbul ignore next: will default to '' when undefined */
+            var workingHTML = textElement[0].innerHTML || <span class="branch-1 cbranch-skip" title="branch not covered" >'';</span>
+            var noOfWords = 0;
+&nbsp;
+            /* istanbul ignore if: will default to '' when undefined */
+            if (workingHTML.replace(/\s*&lt;[^&gt;]*?&gt;\s*/g, '') !== '') {
+                <span class="skip-if-branch" title="else path not taken" >E</span>if (workingHTML.trim() !== '') {
+                    noOfWords = workingHTML.replace(/&lt;\/?(b|i|em|strong|span|u|strikethrough|a|img|small|sub|sup|label)( [^&gt;*?])?&gt;/gi, '') // remove inline tags without adding spaces
+                        .replace(/(&lt;[^&gt;]*?&gt;\s*&lt;[^&gt;]*?&gt;)/ig, ' ') // replace adjacent tags with possible space between with a space
+                        .replace(/(&lt;[^&gt;]*?&gt;)/ig, '') // remove any singular tags
+                        .replace(/\s+/ig, ' ') // condense spacing
+                        .match(/\S+/g).length; // count remaining non-space strings
+                }
+            }
+&nbsp;
+            //Set current scope
+            this.wordcount = noOfWords;
+            //Set editor scope
+            this.$editor().wordcount = noOfWords;
+&nbsp;
+            return false;
+        }
+    });
+    taRegisterTool('charcount', {
+        display: '&lt;div id="toolbarCC" style="display:block; min-width:120px;"&gt;Characters: &lt;span ng-bind="charcount"&gt;&lt;/span&gt;&lt;/div&gt;',
+        disabled: true,
+        charcount: 0,
+        activeState: function(){ // this fires on keyup
+            var textElement = this.$editor().displayElements.text;
+            var sourceText = textElement[0].innerText || textElement[0].textContent; // to cover the non-jquery use case.
+&nbsp;
+            // Caculate number of chars
+            var noOfChars = sourceText.replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+/g,' ').replace(/\s+$/g, ' ').length;
+            //Set current scope
+            this.charcount = noOfChars;
+            //Set editor scope
+            this.$editor().charcount = noOfChars;
+            return false;
+        }
+    });
+}]);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 18 2018 16:00:41 GMT+0100 (BST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
