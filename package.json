@@ -1,6 +1,6 @@
 {
   "name": "eip-textangular2",
-  "version": "1.7",
+  "version": "1.7.1",
   "description": "A Text-Editor/Wysiwyg editor for Angular.js, customised for EIP",
   "keywords": [
     "AngularJS",
